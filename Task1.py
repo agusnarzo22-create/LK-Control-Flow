@@ -1,17 +1,13 @@
 import requests
-
 response = requests.get("https://api.github.com")
 print(response.status_code)
 print(response.text)
 
-
 import math
-
 print(math.sqrt(16))
 print(math.pi)  
 
 import random
-
 angka = random.randint(1, 10)
 print("Angka acak:", angka)
 
@@ -21,9 +17,8 @@ sekarang = datetime.now()
 print("Waktu sekarang:", sekarang)
 
 import random
-
 nilai = random.randint(50, 100)
-print("Nilai:", nilai)
+print("Nilai: ", nilai)
 
 if nilai >= 75:
     print("Lulus")
