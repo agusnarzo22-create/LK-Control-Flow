@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Marine Intelligence{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_marine.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="marine-animated-bg"></div>
+
+<div class="marine-center-wrapper">
+    <div class="sector-container">
+        <header class="sector-header">
+            <div class="header-info">
+                <span class="sector-tag">SECTOR: MARITIME</span>
+                <h1>Marine Intelligence</h1>
+                <p>Optimalisasi profitabilitas operasional armada penangkapan ikan Nusantara.</p>
+            </div>
+        </header>
+
+        <div class="calculator-grid">
+            <div class="card input-card">
+                <h3>Operational Inputs</h3>
+                <div class="input-group">
+                    <label>Estimasi Hasil Tangkapan (Kg)</label>
+                    <input type="number" id="catch-weight" placeholder="Contoh: 500">
+                </div>
+                <div class="input-group">
+                    <label>Harga Jual Rata-rata /Kg</label>
+                    <input type="number" id="fish-price" placeholder="Rp">
+                </div>
+                <div class="input-group">
+                    <label>Biaya BBM & Logistik</label>
+                    <input type="number" id="operational-cost" placeholder="Rp">
+                </div>
+                <div class="input-group">
+                    <label>Jumlah ABK (Crew)</label>
+                    <input type="number" id="crew-count" placeholder="Orang">
+                </div>
+                <button class="btn-calculate" onclick="calculateMarine()">Analyze Operation</button>
+            </div>
+
+            <div class="card result-card">
+                <h3>Projected Analysis</h3>
+                <div class="result-item">
+                    <span>Gross Revenue</span>
+                    <h2 id="res-revenue">Rp 0</h2>
+                </div>
+                <div class="result-divider"></div>
+                <div class="result-item">
+                    <span>Net Profit</span>
+                    <h2 id="res-profit" class="highlight">Rp 0</h2>
+                </div>
+                <div class="result-item">
+                    <span>Profit per Crew (Bagi Hasil)</span>
+                    <p id="res-per-crew">Rp 0</p>
+                </div>
+                <div class="status-indicator" id="marine-status">READY TO ANALYZE</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fungsi cadangan jika format.js belum memuat formatRupiah
+    function localFormatRupiah(angka) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(angka);
+    }
+
+    function calculateMarine() {
+        const weight = parseFloat(document.getElementById('catch-weight').value) || 0;
+        const price = parseFloat(document.getElementById('fish-price').value) || 0;
+        const cost = parseFloat(document.getElementById('operational-cost').value) || 0;
+        const crew = parseFloat(document.getElementById('crew-count').value) || 1;
+
+        if (weight > 0 && price > 0) {
+            const revenue = weight * price;
+            const profit = revenue - cost;
+            const perCrew = profit / crew;
+
+            // Update UI
+            document.getElementById('res-revenue').innerText = localFormatRupiah(revenue);
+            document.getElementById('res-profit').innerText = localFormatRupiah(profit);
+            document.getElementById('res-per-crew').innerText = localFormatRupiah(perCrew);
+
+            const status = document.getElementById('marine-status');
+            if (profit > 0) {
+                status.innerText = "OPERATION PROFITABLE";
+                status.style.color = "#007AFF";
+            } else {
+                status.innerText = "LOSS WARNING!";
+                status.style.color = "#ff4d4d";
+            }
+        } else {
+            alert("Harap masukkan angka yang valid.");
+        }
+    }
+</script>
+{% endblock %}

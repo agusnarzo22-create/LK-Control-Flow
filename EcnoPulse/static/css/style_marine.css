@@ -1,0 +1,116 @@
+/* 1. Background Animasi Bergerak */
+.marine-animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(-45deg, #000000, #000814, #001d3d, #003566);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 2. Menyeimbangkan Posisi ke Tengah */
+.marine-center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+    padding-left: 120px; /* Memberi ruang untuk sidebar */
+}
+
+.sector-container {
+    width: 100%;
+    max-width: 1100px; /* Ukuran maksimal grid agar tidak terlalu lebar */
+}
+
+.sector-header {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.sector-tag {
+    color: #007AFF;
+    letter-spacing: 4px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.sector-header h1 {
+    font-size: 56px;
+    letter-spacing: -2px;
+    margin: 5px 0;
+}
+
+/* 3. Perbaikan Grid */
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.card {
+    background: rgba(10, 10, 10, 0.8); /* Semi-transparan agar animasi bg terlihat halus */
+    backdrop-filter: blur(10px); /* Efek kaca */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    padding: 45px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Form & Input Styling */
+.input-group label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid #222;
+    padding: 18px;
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+.input-group input:focus {
+    border-color: #007AFF;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-calculate {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+/* Results Card */
+.result-item h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.highlight {
+    color: #007AFF;
+    text-shadow: 0 0 30px rgba(0, 122, 255, 0.3);
+}
+
+.status-indicator {
+    letter-spacing: 4px;
+    font-size: 11px;
+    margin-top: 30px;
+    opacity: 0.8;
+}

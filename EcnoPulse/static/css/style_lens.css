@@ -1,0 +1,151 @@
+/* Unique Style Kreator */
+body {
+    background: linear-gradient(135deg, #000000 0%, #2e1065 100%);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.accent {
+    color: transparent;
+    -webkit-text-stroke: 1px #a855f7;
+}
+
+.btn-calc {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: #a855f7; /* Purple */
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+    transition: 0.3s;
+}
+
+.btn-calc:hover {
+    background: #9333ea;
+    transform: translateY(-3px);
+}
+
+/* Copy bagian "SHARED CSS" di bawah ke sini */
+/* --- SHARED LAYOUT & DOCK NAVIGATION --- */
+
+/* Container Utama agar Konten di Tengah */
+.container { 
+    padding: 5% 10%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+/* Tipografi Judul Sektor */
+.numbering { 
+    color: rgba(255,255,255,0.3); 
+    font-weight: 700; 
+    font-size: 1.2rem; 
+    display: block; 
+    margin-bottom: 10px; 
+    letter-spacing: 2px;
+}
+
+h1 { 
+    font-size: 3.5rem; 
+    font-weight: 900; 
+    margin-bottom: 40px; 
+    letter-spacing: -1px;
+}
+
+/* Kartu Kalkulator (Glassmorphism) */
+.calculator-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; 
+}
+
+.glass-card { 
+    background: rgba(255,255,255,0.03); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1); 
+    padding: 40px; 
+    border-radius: 28px; 
+    transition: transform 0.3s ease;
+}
+
+/* --- NAVIGATION DOCK (6 ICONS READY) --- */
+
+.dock-container { 
+    position: fixed; 
+    bottom: 30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 9999; 
+    width: auto;
+}
+
+.dock { 
+    background: rgba(20, 20, 20, 0.6); /* Gelap transparan */
+    backdrop-filter: blur(25px); 
+    -webkit-backdrop-filter: blur(25px);
+    padding: 10px 20px; 
+    border-radius: 50px; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    display: flex; 
+    gap: 18px; /* Jarak antar 6 ikon agar tidak terlalu lebar */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.dock-item { 
+    font-size: 1.6rem; 
+    color: rgba(255, 255, 255, 0.35); 
+    text-decoration: none; 
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+/* Efek saat Icon di-Hover */
+.dock-item:hover { 
+    color: #ffffff; 
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.3) translateY(-15px); 
+}
+
+/* Indikator Halaman Aktif */
+.dock-item.active { 
+    color: #ffffff; 
+    position: relative; 
+}
+
+.dock-item.active::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: 5px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 5px; 
+    height: 5px; 
+    background: #ffffff; 
+    border-radius: 50%; 
+    box-shadow: 0 0 10px #fff;
+}
+
+/* Tooltip Sederhana saat Hover (Opsional) */
+.dock-item:hover::before {
+    content: attr(title);
+    position: absolute;
+    top: -45px;
+    background: rgba(255,255,255,0.1);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    color: #fff;
+    backdrop-filter: blur(5px);
+    white-space: nowrap;
+}

@@ -1,0 +1,164 @@
+/* Unique Style Pertanian */
+body {
+    background: linear-gradient(135deg, #000000 0%, #064e3b 100%);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.accent {
+    color: transparent;
+    -webkit-text-stroke: 1px #10b981;
+}
+
+/* --- FIX: FORM STYLING (Agar tidak berdempetan) --- */
+
+.input-group {
+    margin-bottom: 25px; /* Memberi jarak antar baris kolom */
+    display: flex;
+    flex-direction: column; /* Memaksa Label di atas, Input di bawah */
+}
+
+label {
+    margin-bottom: 10px; /* Jarak antara teks label dan kotak input */
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%; /* Kotak input memenuhi lebar kartu */
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #ffffff;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #10b981; /* Warna hijau saat diketik */
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-calc {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background: #10b981; 
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-calc:hover {
+    background: #059669;
+    transform: translateY(-3px);
+}
+
+/* --- SHARED LAYOUT --- */
+
+.container { 
+    padding: 5% 10%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+.numbering { 
+    color: rgba(255,255,255,0.3); 
+    font-weight: 700; 
+    font-size: 1.2rem; 
+    display: block; 
+    margin-bottom: 10px; 
+    letter-spacing: 2px;
+}
+
+h1 { 
+    font-size: 3.5rem; 
+    font-weight: 900; 
+    margin-bottom: 40px; 
+    letter-spacing: -1px;
+}
+
+.calculator-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; 
+}
+
+.glass-card { 
+    background: rgba(255,255,255,0.03); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1); 
+    padding: 40px; 
+    border-radius: 28px; 
+    transition: transform 0.3s ease;
+}
+
+/* --- NAVIGATION DOCK (6 ICONS) --- */
+
+.dock-container { 
+    position: fixed; 
+    bottom: 30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 9999; 
+}
+
+.dock { 
+    background: rgba(20, 20, 20, 0.6); 
+    backdrop-filter: blur(25px); 
+    -webkit-backdrop-filter: blur(25px);
+    padding: 10px 20px; 
+    border-radius: 50px; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    display: flex; 
+    gap: 18px; 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.dock-item { 
+    font-size: 1.6rem; 
+    color: rgba(255, 255, 255, 0.35); 
+    text-decoration: none; 
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.dock-item:hover { 
+    color: #ffffff; 
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.3) translateY(-15px); 
+}
+
+.dock-item.active { 
+    color: #ffffff; 
+    position: relative; 
+}
+
+.dock-item.active::after { 
+    content: ''; 
+    position: absolute; 
+    bottom: 5px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 5px; 
+    height: 5px; 
+    background: #ffffff; 
+    border-radius: 50%; 
+    box-shadow: 0 0 10px #fff;
+}

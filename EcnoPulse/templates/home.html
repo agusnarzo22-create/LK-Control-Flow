@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Beranda{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_home.css') }}">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="home-wrapper">
+    
+    <section class="section hero-section" id="hero">
+        <div class="hero-container">
+            <h1 class="axon-heading">AXON</h1>
+            <p class="axon-subheading">Analytic Xpension & Operational Nusantara</p>
+            <div class="hero-line"></div>
+            <div class="scroll-hint">
+                <span>EXPLORE THE NETWORK</span>
+                <div class="mouse-icon"><div class="wheel"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section story-section" id="story">
+        <div class="story-grid">
+            <div class="story-text">
+                <h2 class="story-title">The Neural Backbone of Local Economy</h2>
+                <p>
+                    AXON lahir dari pemikiran bahwa setiap data adalah sinyal saraf yang menggerakkan roda ekonomi. Di tengah pesatnya perkembangan digital, kami hadir sebagai jembatan yang menghubungkan potensi lokal—mulai dari pesisir hingga agrikultur—dengan presisi analitik tingkat tinggi untuk memastikan setiap langkah ekspansi memiliki arah yang pasti.
+                </p>
+                <p>
+                    Kami percaya bahwa pertumbuhan sejati bukan hanya tentang angka, melainkan tentang ketangguhan operasional. Melalui ekosistem AXON, kami mentransformasi kompleksitas bisnis menjadi keputusan strategis yang sederhana, memberdayakan UMKM dan kreator Nusantara untuk naik kelas dengan pondasi yang terukur dan berkelanjutan.
+                </p>
+            </div>
+            <div class="story-visual">
+                <model-viewer 
+                    src="{{ url_for('static', filename='assets/models/home3d.glb') }}" 
+                    alt="AXON Core 3D Model"
+                    auto-rotate 
+                    camera-controls 
+                    disable-zoom 
+                    shadow-intensity="1"
+                    class="axon-3d-model">
+                </model-viewer>
+            </div>
+        </div>
+    </section>
+
+    <section class="section showcase-section" id="showcase">
+        <div class="showcase-header">
+            <span class="tag">SELECT SECTOR</span>
+            <h2>Integrated Ecosystem</h2>
+        </div>
+
+        <div class="showcase-grid">
+            <a href="/marine" class="showcase-card">
+                <img src="{{ url_for('static', filename='assets/img/showcase1.jpg') }}" alt="Marine">
+                <div class="card-overlay">
+                    <h3>Maritime Intelligence</h3>
+                    <p>Optimalisasi profit armada nelayan.</p>
+                </div>
+            </a>
+
+            <a href="/agro" class="showcase-card">
+                <img src="{{ url_for('static', filename='assets/img/showcase2.jpg') }}" alt="Agro">
+                <div class="card-overlay">
+                    <h3>Agro-Yield Optimizer</h3>
+                    <p>Maksimalkan hasil panen Nusantara.</p>
+                </div>
+            </a>
+
+            <a href="/gear" class="showcase-card">
+                <img src="{{ url_for('static', filename='assets/img/showcase3.jpg') }}" alt="Gear">
+                <div class="card-overlay">
+                    <h3>Expansion Feasibility</h3>
+                    <p>Analisis cerdas kelayakan industri.</p>
+                </div>
+            </a>
+
+            <a href="/lens" class="showcase-card">
+                <img src="{{ url_for('static', filename='assets/img/showcase4.jpg') }}" alt="Lens">
+                <div class="card-overlay">
+                    <h3>Creative Lifecycle</h3>
+                    <p>Manajemen aset digital kreator.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

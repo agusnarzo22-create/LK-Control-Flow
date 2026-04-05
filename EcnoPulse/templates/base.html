@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>AXON | {% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    
+    {% block extra_css %}{% endblock %}
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset Dasar agar tampilan bersih */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #000; /* Latar belakang hitam pekat AXON */
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Container utama agar konten tidak tertutup Sidebar */
+        .main-wrapper {
+            margin-left: 80px; /* Lebar sidebar kita tadi */
+            min-height: 100vh;
+            width: calc(100% - 80px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+  <aside class="axon-sidebar">
+    <div class="sidebar-logo">
+        <a href="/">
+            <img src="{{ url_for('static', filename='assets/brand/logobrand.png') }}" alt="AXON">
+            <span class="logo-text">AXON</span> </a>
+    </div>
+
+    <nav class="sidebar-nav">
+    <a href="/" class="nav-item">
+        <img src="{{ url_for('static', filename='assets/icons/Home.png') }}">
+        <span class="nav-label">Dashboard</span>
+    </a>
+    <a href="/marine" class="nav-item">
+        <img src="{{ url_for('static', filename='assets/icons/Marine.png') }}">
+        <span class="nav-label">Marine</span>
+    </a>
+    <a href="/agro" class="nav-item">
+        <img src="{{ url_for('static', filename='assets/icons/Agro.png') }}">
+        <span class="nav-label">Agro</span>
+    </a>
+    <a href="/gear" class="nav-item">
+        <img src="{{ url_for('static', filename='assets/icons/Gear.png') }}">
+        <span class="nav-label">Gear</span>
+    </a>
+    <a href="/lens" class="nav-item">
+        <img src="{{ url_for('static', filename='assets/icons/Lens.png') }}">
+        <span class="nav-label">Lens</span>
+    </a>
+</nav>
+
+    <div class="sidebar-footer">
+        <a href="/moreinfo" class="nav-item">
+            <img src="{{ url_for('static', filename='assets/icons/Moreinfo.png') }}">
+            <span class="nav-label">Documentation</span>
+        </a>
+    </div>
+  </aside>
+
+    <main class="main-wrapper">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/format.js') }}"></script>
+
+</body>
+</html>

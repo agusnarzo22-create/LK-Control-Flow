@@ -1,0 +1,119 @@
+/* ==========================================
+   AXON SIDEBAR - EXPANDABLE VERSION
+   ========================================== */
+
+.axon-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 80px; /* Lebar saat tertutup */
+    height: 100vh;
+    background-color: #000000;
+    border-right: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 15px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Efek Melebar Premium */
+    overflow: hidden; /* Sembunyikan label saat tertutup */
+    z-index: 10000;
+}
+
+/* EFEK MELEBAR SAAT HOVER */
+.axon-sidebar:hover {
+    width: 260px; 
+    box-shadow: 20px 0 50px rgba(0,0,0,0.6);
+}
+
+/* LOGO SECTION */
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    margin-bottom: 40px;
+    text-decoration: none;
+}
+
+.sidebar-logo img {
+    min-width: 40px; /* Agar logo tidak gepeng saat sidebar mengecil */
+    width: 40px;
+    height: auto;
+}
+
+.logo-text {
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #fff;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* NAV ITEMS */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.nav-item img {
+    min-width: 24px;
+    width: 24px;
+    filter: brightness(0) invert(1); /* Bikin ikon PNG jadi putih */
+    opacity: 0.4;
+    transition: 0.3s;
+}
+
+/* LABEL TEKS (Keterangan Sektor) */
+.nav-label {
+    margin-left: 15px; /* Jarak pas antara ikon dan teks */
+    font-size: 13px; /* Sedikit dikecilkan agar lebih elegan */
+    font-weight: 500;
+    text-transform: uppercase; /* Membuat kesan techy */
+    letter-spacing: 2px;
+    color: #666; /* Warna default abu-abu agar tidak terlalu mencolok */
+    white-space: nowrap;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.nav-item:hover .nav-label, 
+.nav-item.active .nav-label {
+    color: #fff;
+    opacity: 1;
+}
+
+/* TAMPILKAN TEKS SAAT SIDEBAR MELEBAR */
+.axon-sidebar:hover .nav-label,
+.axon-sidebar:hover .logo-text {
+    opacity: 1;
+}
+
+/* HOVER & ACTIVE STATE */
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item:hover img, .nav-item.active img {
+    opacity: 1;
+}
+
+.nav-item:hover .nav-label, .nav-item.active .nav-label {
+    color: #fff;
+}
+
+.nav-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}

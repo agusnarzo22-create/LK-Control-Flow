@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>NusantaraPulse | Pertanian</title>
+  <link rel="stylesheet" href="https://cdn.npmmirror.com/package/bootstrap-icons/1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_pertanian.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <span class="numbering">.02</span>
+            <h1>SEKTOR <span class="accent">PERTANIAN</span></h1>
+        </header>
+
+        <section class="calculator-grid">
+            <form method="POST" class="glass-card">
+                <div class="input-group">
+                    <label>Total Modal (Bibit & Pupuk)</label>
+                    <input type="number" name="modal" placeholder="Contoh: 5000000" required>
+                </div>
+                <div class="input-group">
+                    <label>Hasil Panen (Kg)</label>
+                    <input type="number" name="panen_kg" placeholder="Contoh: 1000" required>
+                </div>
+                <div class="input-group">
+                    <label>Harga Jual /Kg</label>
+                    <input type="number" name="harga_jual" placeholder="Contoh: 15000" required>
+                </div>
+                <button type="submit" class="btn-calc">Cek Keuntungan</button>
+            </form>
+            
+            {% if hasil %}
+            <div class="glass-card">
+                <h3>Hasil Analisis</h3>
+                <p>ROI: {{ hasil.roi }}%</p>
+                <p>Profit: Rp {{ "{:,.0f}".format(hasil.untung) }}</p>
+            </div>
+            {% endif %}
+        </section>
+    </div>
+
+    <nav class="dock-container">
+        <div class="dock">
+            <a href="/" class="dock-item" title="Home"><i class="bi bi-house-door"></i></a>
+            <a href="/perikanan" class="dock-item" title="Perikanan"><i class="bi bi-anchor"></i></a>
+            <a href="/pertanian" class="dock-item active" title="Pertanian"><i class="bi bi-leaf"></i></a>
+            <a href="/industri" class="dock-item" title="Industri"><i class="bi bi-gear"></i></a>
+            <a href="/kreator" class="dock-item" title="Kreator"><i class="bi bi-camera"></i></a>
+            <a href="/moreinfo" class="dock-item" title="More Info"><i class="bi bi-info-circle"></i></a>
+        </div>
+    </nav>
+    <script src="{{ url_for('static', filename='js/format.js') }}"></script>
+</body>
+</html>
