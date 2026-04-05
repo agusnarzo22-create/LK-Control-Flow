@@ -1,63 +1,95 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>NusantaraPulse | Industri</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_industri.css') }}">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <span class="numbering">.04</span>
-            <h1>SEKTOR <span class="accent">INDUSTRI</span></h1>
+{% extends "base.html" %}
+
+{% block title %}Industrial Scaling{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_gear.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="gear-bg-black"></div>
+<div class="gear-orb"></div>
+
+<div class="gear-center-wrapper">
+    <div class="sector-container">
+        <header class="sector-header">
+            <div class="header-info">
+                <span class="sector-tag">SECTOR: INDUSTRIAL</span>
+                <h1>Industrial Scaling</h1>
+                <p>Analisis kelayakan ekspansi infrastruktur dan perhitungan Payback Period untuk skalabilitas operasional industri.</p>
+            </div>
         </header>
 
-        <section class="calculator-grid">
-            <form method="POST" class="glass-card">
+        <div class="calculator-grid">
+            <div class="card input-card">
+                <h3>Scalability Inputs</h3>
                 <div class="input-group">
-                    <label>Biaya Tetap (Sewa/Listrik)</label>
-                    <input type="number" name="biaya_tetap" step="any" required placeholder="Rp">
-                </div>
-                <div class="input-group">
-                    <label>Harga Jual /Unit</label>
-                    <input type="number" name="harga_unit" step="any" required placeholder="Rp">
+                    <label>Modal Ekspansi (Harga Mesin/Alat)</label>
+                    <input type="number" id="gear-investment" placeholder="Rp">
                 </div>
                 <div class="input-group">
-                    <label>Biaya Variabel /Unit</label>
-                    <input type="number" name="biaya_var" step="any" required placeholder="Rp">
+                    <label>Margin Keuntungan per Unit</label>
+                    <input type="number" id="gear-margin" placeholder="Rp">
                 </div>
-                <button type="submit" class="btn-calc">Hitung Titik Impas</button>
-            </form>
-
-            {% if hasil %}
-            <div class="glass-card result-card">
-                <div class="stat">
-                    <p>Break-Even Point (BEP)</p>
-                    <h2>{{ hasil.bep_unit }} <small>Unit</small></h2>
+                <div class="input-group">
+                    <label>Tambahan Produksi per Bulan</label>
+                    <input type="number" id="gear-units" placeholder="Contoh: 500 Unit">
                 </div>
-                <p>Anda harus menjual minimal {{ hasil.bep_unit }} produk untuk mulai mendapatkan keuntungan.</p>
+                <button class="btn-calculate" onclick="calculateGear()">Analyze Expansion</button>
             </div>
-            {% endif %}
-        </section>
-    </div>
 
-   <nav class="dock-container">
-    <div class="dock">
-        <a href="/" class="dock-item" title="Home"><i class="bi bi-house-door"></i></a>
-        
-        <a href="/perikanan" class="dock-item" title="Perikanan"><i class="bi bi-anchor"></i></a>
-        
-        <a href="/pertanian" class="dock-item" title="Pertanian"><i class="bi bi-leaf"></i></a>
-        
-        <a href="/industri" class="dock-item" title="Industri"><i class="bi bi-gear"></i></a>
-        
-        <a href="/kreator" class="dock-item" title="Kreator"><i class="bi bi-camera"></i></a>
-        
-        <a href="/moreinfo" class="dock-item" title="More Info"><i class="bi bi-info-circle"></i></a>
+            <div class="card result-card">
+                <h3>Investment Analysis</h3>
+                <div class="result-item">
+                    <span>Monthly Add. Profit</span>
+                    <h2 id="gear-res-monthly">Rp 0</h2>
+                </div>
+                <div class="result-divider"></div>
+                <div class="result-item">
+                    <span>Payback Period</span>
+                    <h2 id="gear-res-payback" class="highlight-gold">0 Months</h2>
+                </div>
+                <div class="status-indicator" id="gear-status">READY TO ANALYZE</div>
+            </div>
+        </div>
     </div>
-  </nav>
-    <script src="{{ url_for('static', filename='js/format.js') }}"></script>
-</body>
-</html>
+</div>
+
+<script>
+    function localFormatRupiah(angka) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        }).format(angka);
+    }
+
+    function calculateGear() {
+        const investment = parseFloat(document.getElementById('gear-investment').value) || 0;
+        const margin = parseFloat(document.getElementById('gear-margin').value) || 0;
+        const units = parseFloat(document.getElementById('gear-units').value) || 0;
+
+        if (investment > 0 && margin > 0 && units > 0) {
+            const monthlyProfit = margin * units;
+            const payback = investment / monthlyProfit;
+
+            document.getElementById('gear-res-monthly').innerText = localFormatRupiah(monthlyProfit);
+            document.getElementById('gear-res-payback').innerText = payback.toFixed(1) + " Months";
+
+            const status = document.getElementById('gear-status');
+            if (payback <= 6) {
+                status.innerText = "HIGHLY FEASIBLE";
+                status.style.color = "#FFB800"; // Warna Emas
+            } else if (payback <= 12) {
+                status.innerText = "MODERATE RISK";
+                status.style.color = "#888";
+            } else {
+                status.innerText = "LONG-TERM RECOVERY";
+                status.style.color = "#444";
+            }
+        } else {
+            alert("Harap masukkan semua data investasi.");
+        }
+    }
+</script>
+{% endblock %}

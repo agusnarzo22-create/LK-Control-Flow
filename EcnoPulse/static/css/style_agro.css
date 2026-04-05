@@ -1,164 +1,204 @@
-/* Unique Style Pertanian */
+/* ============================================================
+   AGRO-YIELD OPTIMIZER - CYBER GREEN THEME
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: linear-gradient(135deg, #000000 0%, #064e3b 100%);
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* 1. BACKGROUND SYSTEM */
+.agro-bg-black {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    background: #000;
+    z-index: -2;
 }
 
-.accent {
-    color: transparent;
-    -webkit-text-stroke: 1px #10b981;
+.agro-orb {
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    /* Gradasi Hijau Terang ke Transparan */
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.05) 50%, transparent 70%);
+    filter: blur(100px);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+    animation: moveOrbAgro 30s infinite alternate ease-in-out;
 }
 
-/* --- FIX: FORM STYLING (Agar tidak berdempetan) --- */
+@keyframes moveOrbAgro {
+    0% { top: 60%; left: 70%; transform: scale(1); }
+    50% { top: -10%; left: 10%; transform: scale(1.4); }
+    100% { top: 30%; left: 50%; transform: scale(0.8); }
+}
 
-.input-group {
-    margin-bottom: 25px; /* Memberi jarak antar baris kolom */
+/* 2. LAYOUT */
+.agro-center-wrapper {
     display: flex;
-    flex-direction: column; /* Memaksa Label di atas, Input di bawah */
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-left: 100px;
+    padding-top: 80px;
+    padding-right: 40px;
 }
 
-label {
-    margin-bottom: 10px; /* Jarak antara teks label dan kotak input */
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
+.sector-container {
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* 3. HEADER */
+.sector-tag {
+    color: #00ff88; /* Hijau Agro */
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
 }
 
-input {
-    width: 100%; /* Kotak input memenuhi lebar kartu */
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    color: #ffffff;
+.sector-header h1 {
+    font-size: 72px;
+    font-weight: 900;
+    letter-spacing: -4px;
+    line-height: 1;
+    margin-bottom: 30px; 
+}
+
+.sector-header p {
+    color: #888;
+    max-width: 550px;
+    line-height: 1.6;
+    margin-top: 5px; 
+    margin-bottom: 15px;
+}
+
+/* 4. CARDS & GRID */
+.calculator-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+}
+
+.card {
+    background: rgba(15, 15, 15, 0.85);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+}
+
+.card h3 {
+    font-size: 14px;
+    color: #333; /* Sangat gelap agar kontras dengan card */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+}
+
+/* 5. INPUTS */
+.input-group label {
+    display: block;
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #1a1a1a;
+    padding: 20px;
+    border-radius: 16px;
+    color: #fff;
+    font-size: 18px;
     outline: none;
     transition: 0.3s;
 }
 
-input:focus {
-    border-color: #10b981; /* Warna hijau saat diketik */
-    background: rgba(255, 255, 255, 0.1);
+.input-group input:focus {
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.05);
 }
 
-.btn-calc {
+.btn-calculate {
     width: 100%;
-    padding: 15px;
+    padding: 22px;
+    background: #00ff88; /* Tombol Hijau */
+    color: #000;
     border: none;
-    background: #10b981; 
-    color: #fff;
-    border-radius: 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
-    font-weight: 700;
-    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
     transition: 0.3s;
     margin-top: 10px;
 }
 
-.btn-calc:hover {
-    background: #059669;
-    transform: translateY(-3px);
+.btn-calculate:hover {
+    background: #fff;
+    transform: translateY(-5px);
 }
 
-/* --- SHARED LAYOUT --- */
-
-.container { 
-    padding: 5% 10%; 
-    max-width: 1200px; 
-    margin: 0 auto;
-}
-
-.numbering { 
-    color: rgba(255,255,255,0.3); 
-    font-weight: 700; 
-    font-size: 1.2rem; 
-    display: block; 
-    margin-bottom: 10px; 
+/* 6. RESULTS & GLOW */
+.result-item span {
+    font-size: 11px;
+    color: #444;
+    text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-h1 { 
-    font-size: 3.5rem; 
-    font-weight: 900; 
-    margin-bottom: 40px; 
-    letter-spacing: -1px;
+.result-item h2 {
+    font-size: 56px;
+    font-weight: 900;
+    margin-top: 5px;
 }
 
-.calculator-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 40px; 
+.highlight-green {
+    color: #fff !important;
+    text-shadow: 
+        0 0 15px rgba(255,255,255,0.8),
+        0 0 30px rgba(0, 255, 136, 0.6),
+        0 0 50px rgba(0, 255, 136, 0.4);
 }
 
-.glass-card { 
-    background: rgba(255,255,255,0.03); 
-    backdrop-filter: blur(20px); 
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.1); 
-    padding: 40px; 
-    border-radius: 28px; 
-    transition: transform 0.3s ease;
+.roi-text {
+    font-size: 32px;
+    font-weight: 800;
+    color: #00ff88;
+    margin-top: 5px;
 }
 
-/* --- NAVIGATION DOCK (6 ICONS) --- */
-
-.dock-container { 
-    position: fixed; 
-    bottom: 30px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    z-index: 9999; 
+.result-divider {
+    height: 1px;
+    background: linear-gradient(90deg, #222, transparent);
+    margin-bottom: 35px;
 }
 
-.dock { 
-    background: rgba(20, 20, 20, 0.6); 
-    backdrop-filter: blur(25px); 
-    -webkit-backdrop-filter: blur(25px);
-    padding: 10px 20px; 
-    border-radius: 50px; 
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    display: flex; 
-    gap: 18px; 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-.dock-item { 
-    font-size: 1.6rem; 
-    color: rgba(255, 255, 255, 0.35); 
-    text-decoration: none; 
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-}
-
-.dock-item:hover { 
-    color: #ffffff; 
-    background: rgba(255,255,255,0.1);
-    transform: scale(1.3) translateY(-15px); 
-}
-
-.dock-item.active { 
-    color: #ffffff; 
-    position: relative; 
-}
-
-.dock-item.active::after { 
-    content: ''; 
-    position: absolute; 
-    bottom: 5px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    width: 5px; 
-    height: 5px; 
-    background: #ffffff; 
-    border-radius: 50%; 
-    box-shadow: 0 0 10px #fff;
+.status-indicator {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    color: #222;
 }

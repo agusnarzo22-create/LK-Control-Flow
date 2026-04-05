@@ -1,66 +1,69 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NusantaraPulse | More Info</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/more_info.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-    <div class="container">
-        <header class="fade-in">
-            <span class="numbering">.06</span>
-            <h1>INFORMATION <span class="accent">CENTER</span></h1>
+{% block title %}Information Center - AXON{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/more_info.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="info-bg-black"></div>
+<div class="info-orb"></div>
+
+<div class="info-center-wrapper">
+    <div class="info-container">
+        <header class="info-header">
+            <span class="header-tag">.06</span>
+            <h1>INFORMATION</h1>
+            <h1 class="outline-text">CENTER</h1>
         </header>
 
-        <main class="info-grid">
-            <div class="glass-card full-width fade-in">
-                <h3>Tentang NusantaraPulse</h3>
-                <p>NusantaraPulse adalah platform <strong>Decision Support System (DSS)</strong> mandiri yang dirancang untuk membantu pelaku ekonomi lokal di Sulawesi Selatan (khususnya Makassar & Bantaeng) dalam mengambil keputusan berbasis data sederhana tanpa memerlukan database rumit.</p>
+        <div class="info-grid">
+            <div class="card card-full">
+                <h3>Tentang AXON</h3>
+                <p>
+                    <strong>AXON</strong> (Agri-Marine & Industrial Digital Business Support) adalah platform 
+                    <em>Decision Support System</em> (DSS) mandiri yang dirancang untuk mentransformasi data sederhana menjadi keputusan strategis. 
+                    Platform ini hadir untuk memberdayakan potensi ekonomi lokal di Sulawesi Selatan melalui optimalisasi efisiensi di berbagai sektor inti.
+                </p>
             </div>
 
-            <div class="glass-card fade-in">
-                <i class="bi bi-lightbulb"></i>
-                <h3>Metodologi</h3>
-                <div class="term-item">
-                    <strong>ROI (Return on Investment)</strong>
-                    <p>Digunakan di Sektor Pertanian untuk melihat persentase efektivitas modal terhadap hasil panen.</p>
+            <div class="info-row">
+                <div class="card card-half">
+                     <div class="card-title-wrapper">
+                         <i class="far fa-lightbulb"></i>
+                             <h3>Metodologi</h3>
+                    </div>
+                 <div class="method-item">
+                     <span class="method-title">ROI (Return on Investment)</span>
+                         <p>Digunakan di Sektor Pertanian untuk melihat persentase efektivitas modal terhadap hasil panen.</p>
                 </div>
-                <div class="term-item">
-                    <strong>BEP (Break Even Point)</strong>
-                    <p>Digunakan di Sektor Industri untuk menentukan titik impas jumlah produksi.</p>
-                </div>
-            </div>
-
-            <div class="glass-card fade-in">
-                <i class="bi bi-person-badge"></i>
-                <h3>Developer Profile</h3>
-                <p>Dikembangkan secara eksklusif oleh:</p>
-                <h4 class="dev-name">Agus Pratama</h4>
-                <p class="dev-major">Digital Business Student<br>Universitas Negeri Makassar</p>
-                <div class="social-links">
-                    <i class="bi bi-github"></i>
-                    <i class="bi bi-linkedin"></i>
-                    <i class="bi bi-instagram"></i>
-                </div>
-            </div>
-        </main>
+    <div class="method-item">
+        <span class="method-title">BEP (Break Even Point)</span>
+        <p>Digunakan di Sektor Industri untuk menentukan titik impas jumlah produksi.</p>
     </div>
+</div>
 
-    <nav class="dock-container">
-        <div class="dock">
-            <a href="/" class="dock-item" title="Home"><i class="bi bi-house-door"></i></a>
-            <a href="/perikanan" class="dock-item" title="Perikanan"><i class="bi bi-anchor"></i></a>
-            <a href="/pertanian" class="dock-item" title="Pertanian"><i class="bi bi-leaf"></i></a>
-            <a href="/industri" class="dock-item" title="Industri"><i class="bi bi-gear"></i></a>
-            <a href="/kreator" class="dock-item" title="Kreator"><i class="bi bi-camera"></i></a>
-            <a href="/moreinfo" class="dock-item active" title="More Info"><i class="bi bi-info-circle"></i></a>
+    <div class="card card-half">
+        <div class="card-title-wrapper">
+            <i class="far fa-address-book"></i>
+                <h3>Developer Profile</h3>
         </div>
-    </nav>
-
-    <script src="{{ url_for('static', filename='js/format.js') }}"></script>
-</body>
-</html>
+            <p class="dev-label">Dikembangkan secara eksklusif oleh:</p>
+            <div class="dev-info">
+                <span class="dev-name">Agus Pratama</span>
+                <span class="dev-status">DIGITAL BUSINESS STUDENT</span>
+                <span class="dev-univ">UNIVERSITAS NEGERI MAKASSAR</span>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
