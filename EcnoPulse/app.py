@@ -57,7 +57,7 @@ def Agro():
         except ValueError:
             hasil = {'error': "Mohon masukkan angka yang valid."}
             
-    return render_template('Agro.html', hasil=hasil)
+    return render_template('agro.html', hasil=hasil)
 
 # --- 4. SEKTOR INDUSTRI (Analisis Skalabilitas & Ekspansi) ---
 @app.route('/gear', methods=['GET', 'POST'])
